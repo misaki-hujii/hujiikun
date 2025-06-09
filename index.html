@@ -98,7 +98,7 @@
           setTimeout(function() {
             console.log('anime01終了。anime04再生＆移動＆sound04再生＆sakebi1再生');
             modelEl.setAttribute('animation-mixer', {clip: 'anime04', loop: 'false', repetitions: 1, timeScale: 0.4, clampWhenFinished: true});
-            modelEl.setAttribute('animation__position', 'property: position; to: 0 -0.5 -1; dur: 2200; easing: linear; loop: false');
+            modelEl.setAttribute('animation__position', 'property: position; to: 0 -0.5 -2; dur: 2200; easing: linear; loop: false');
             sound4El.components.sound.playSound();
             sound1El.components.sound.playSound(); // anime04と同時にsakebi1.mp3再生
 
