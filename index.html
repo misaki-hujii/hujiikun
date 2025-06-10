@@ -1,5 +1,5 @@
 <!--
-ページ読込直後は、glbモデル非表示。
+ページ読込直後は、glbモデル表示。
   BGMを2秒再生したら、モデルを初期位置(-10,-0.8,-16)で表示しanime01を4回再生（移動なし）
   anime01を1回再生後、anime02を1回再生しつつ(-10,-0.8,-16)→(0,-0.8,0)へ移動、sakebi1.mp3再生
   anime03を2回再生後、anime04を3回再生（移動なし）、sakebi1.mp3再生
@@ -87,20 +87,20 @@
         console.log('ユーザーアクションを検出しました。BGMを開始します。');
         bgmEl.components.sound.playSound();
 
-        // 2秒後にモデル表示＆anime01を2回再生
+        // 0.2秒後にモデル表示＆anime01を2回再生
         setTimeout(function() {
-          console.log('2秒経過。モデル表示＆anime01を2回再生');
+          console.log('0.2秒経過。モデル表示＆anime01を2回再生');
           modelEl.setAttribute('visible', true);
           modelEl.setAttribute('position', '0 -0.5 -56');
-          modelEl.setAttribute('animation-mixer', {clip: 'anime01', loop: 'false', repetitions: 2, timeScale: 1, clampWhenFinished: true});
+          modelEl.setAttribute('animation-mixer', {clip: 'anime01', loop: 'false', repetitions: 2.2, timeScale: 1, clampWhenFinished: true});
           
           // anime01(1.667秒×2回=3.334秒)終了後にanime04へ
           setTimeout(function() {
             console.log('anime01終了。anime04再生＆移動＆sound04再生＆sakebi1再生');
-            modelEl.setAttribute('animation-mixer', {clip: 'anime04', loop: 'false', repetitions: 1, timeScale: 0.4, clampWhenFinished: true});
+            modelEl.setAttribute('animation-mixer', {clip: 'anime04', loop: 'false', repetitions: 1, timeScale: 2.3, clampWhenFinished: true});
             modelEl.setAttribute('animation__position', 'property: position; to: 0 -0.5 -2.5; dur: 2200; easing: linear; loop: false');
             sound4El.components.sound.playSound();
-            sound1El.components.sound.playSound(); // anime04と同時にsakebi1.mp3再生
+            sound1El.components.sound.playSound(); // anime01と同時にsakebi1.mp3再生
 
             // anime04(2.233秒)終了後にanime04をもう1回再生（移動なし）
             setTimeout(function() {
@@ -113,11 +113,11 @@
                 sound4El.components.sound.stopSound();
                 sound1El.components.sound.stopSound(); // 再生終了時に停止
                 console.log('anime04終了。ページ遷移');
-                window.location.href = '../vr08/';
+                window.location.href = '../vr06/';
               }, 2233);
             }, 2233);
           }, 1667 * 2);
-        }, 2000);
+        }, 200); // ←ここを0.2秒(200ms)に変更
       }
     });
   </script>
