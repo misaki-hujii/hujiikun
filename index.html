@@ -92,7 +92,7 @@
           console.log('0.2秒経過。モデル表示＆anime01を2回再生');
           modelEl.setAttribute('visible', true);
           modelEl.setAttribute('position', '0 -0.5 -56');
-          modelEl.setAttribute('animation-mixer', {clip: 'anime01', loop: 'false', repetitions: 2.2, timeScale: 1, clampWhenFinished: true});
+          modelEl.setAttribute('animation-mixer', {clip: 'anime01', loop: 'false', repetitions: 2.2, timeScale: 0.9, clampWhenFinished: true});
           
           // anime01(1.667秒×2回=3.334秒)終了後にanime04へ
           setTimeout(function() {
@@ -113,7 +113,7 @@
                 sound4El.components.sound.stopSound();
                 sound1El.components.sound.stopSound(); // 再生終了時に停止
                 console.log('anime04終了。ページ遷移');
-                window.location.href = '../vr06/';
+                window.location.href = '../vr10/';
               }, 2233);
             }, 2233);
           }, 1667 * 2);
